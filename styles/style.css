@@ -1,0 +1,262 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --darkBlue : #16199e;
+    --lightBlue : #48cae4;
+    --gradient1: linear-gradient(130deg, #023e8a, #0096c7,#48cae4);
+    --gradient1-pale: linear-gradient(130deg, #0077b6, #00b4d8, #90e0ef);
+    --gradient2: linear-gradient(130deg, #415a77, #778da9);
+    --white: #fff;
+    --red: #d90429;
+    --black: #000000;
+}
+
+body {
+    background: var(--darkBlue);
+}
+
+header {
+    color: var(--white);
+    padding-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header button{
+    width: 100px;
+    margin-top: 20px;
+}
+
+p {
+    font-weight: 200;
+    font-size: 14px;
+}
+
+strong {
+    font-weight: 500;
+}
+
+h1 {
+    color: var(--white);
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+h2 {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    background: var(--gradient2);
+    /*Establecer el fondo del texto */
+    -webkit-background-clip: text;
+    /* Clip del fondo en el texto para WebKit */
+    background-clip: text;
+    /* Propiedad estándar para otros navegadores */
+    -webkit-text-fill-color: transparent;
+    /* Hacer que el texto sea transparente para WebKit*/
+}
+
+a {
+    color: var(--white);
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 26px;
+    padding: 28px 30px;
+}
+
+article{
+    border-radius: 13px;
+    padding: 30px 18px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    color: var(--white);
+    border: 1px solid transparent;
+    border-image: var(--gradient1);
+    overflow: hidden;
+}
+
+button,
+.button {
+    font-family:  sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+    background: var(--gradient1);
+    width: 100%;
+    padding: 9px;
+    border-radius: 8px;
+    border: none;
+    height: 42px;
+    transition: 0.3s;
+}
+article div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 200;
+}
+
+
+footer {
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    color: var(--white);
+    background: var(--gradient1);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+footer h3 {
+    padding-bottom: 4px;
+}
+
+button,
+.button {
+    font-family: sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+    background: var(--gradient1);
+    width: 100%;
+    padding: 9px;
+    border-radius: 8px;
+    border: none;
+    height: 42px;
+    transition: 0.3s;
+}
+article div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 200;
+}
+
+.hide{
+    display: none;
+}
+/* -------------------- POPUP -------------------- */
+.popup {
+    display: none;
+    /* Oculto por defecto */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--gradient1);
+    /* Fondo oscuro */
+    z-index: 1000;
+    /* Asegura que el popup esté encima */
+}
+.popup-content {
+    background-color: var(--lightBlue);
+    margin: 15% auto;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    position: relative;
+}
+.popup-content h2{
+    background-color: var(--gradient1);
+    padding-top: 8px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--darkBlue);
+}
+form label, form > input  {
+    margin-top: 18px;
+}
+.popup-content div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+}
+.close:hover,
+.close:focus {
+    color: var(--black);
+    text-decoration: none;
+    cursor: pointer;
+}
+.warning {
+    color: var(--red);
+    font-weight: 600;
+    padding-top: 12px;
+}
+
+/* Media Queries */
+
+@media (min-width: 700px) {
+    main,
+    header {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    header {
+        flex-direction: row;
+    }
+    header div {
+        width: 100%;
+    }
+    header button {
+        margin-top: 0px;
+    }
+    footer {
+        text-align: center;
+        bottom: 0;
+    }
+    section {
+        flex-direction: row;
+    }
+    article {
+        width: 220px;
+        justify-content: space-between;
+    }
+    #logIn:hover, #logOut:hover {
+        cursor: pointer;
+        color: var(--darkBlue);
+        background: var(--gradient1-pale);
+        width: 140px;
+    }
+    #signUp:hover {
+        cursor: pointer;
+        background: var(--gradient1-pale);
+        width: 140px;
+    }
+    button:hover,
+    .button:hover {
+        font-size: 14.5px;
+        cursor: pointer;
+        background: var(--gradient1-pale);
+        width: 100%;
+    }
+}
