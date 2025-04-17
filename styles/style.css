@@ -103,6 +103,7 @@ button,
     height: 42px;
     transition: 0.3s;
 }
+
 article div:first-child {
     display: flex;
     flex-direction: column;
@@ -121,36 +122,192 @@ footer {
     flex-direction: column;
     gap: 18px;
 }
+
 footer h3 {
     padding-bottom: 4px;
 }
 
-button,
-.button {
-    font-family: sans-serif;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--white);
-    background: var(--gradient1);
+.book div:nth-child(2) {
     width: 100%;
-    padding: 9px;
-    border-radius: 8px;
-    border: none;
-    height: 42px;
-    transition: 0.3s;
+    display: flex;
+    justify-content: center;
 }
-article div:first-child {
+
+.book div:nth-child(3) {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    font-weight: 200;
+}
+
+.book img {
+    width: 180px;
+    border-radius: 10px;
+}
+
+.button {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+#logIn, #logOut {
+    color: var(--white);
+}
+
+#listName {
+    color: var(--white);
+    text-align: center;
+}
+
+#divBack,
+#divUser {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+#back {
+    width: 280px;
+}
+
+/*---------------- Spinner (foro)---------------- */
+/* Absolute Center Spinner */
+.loading {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    visibility: hidden;
+}
+
+/* Transparent Overlay */
+.loading:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient1);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+    /* hide "loading..." text */
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.loading:not(:required):after {
+    content: '';
+    display: block;
+    font-size: 10px;
+    width: 1em;
+    height: 1em;
+    margin-top: -0.5em;
+    -webkit-animation: spinner 1500ms infinite linear;
+    -moz-animation: spinner 1500ms infinite linear;
+    -ms-animation: spinner 1500ms infinite linear;
+    -o-animation: spinner 1500ms infinite linear;
+    animation: spinner 1500ms infinite linear;
+    border-radius: 0.5em;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+
 }
 
 .hide{
     display: none;
 }
+
 /* -------------------- POPUP -------------------- */
+
 .popup {
     display: none;
     /* Oculto por defecto */
@@ -164,6 +321,7 @@ article div:first-child {
     z-index: 1000;
     /* Asegura que el popup esté encima */
 }
+
 .popup-content {
     background-color: var(--lightBlue);
     margin: 15% auto;
@@ -172,28 +330,34 @@ article div:first-child {
     width: 300px;
     position: relative;
 }
+
 .popup-content h2{
     background-color: var(--gradient1);
     padding-top: 8px;
 }
+
 form {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
+
 input {
     padding: 10px;
     border-radius: 8px;
     border: 1px solid var(--darkBlue);
 }
+
 form label, form > input  {
     margin-top: 18px;
 }
+
 .popup-content div {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
+
 .close {
     color: #aaa;
     font-size: 28px;
@@ -201,12 +365,14 @@ form label, form > input  {
     position: absolute;
     right: 20px;
 }
+
 .close:hover,
 .close:focus {
     color: var(--black);
     text-decoration: none;
     cursor: pointer;
 }
+
 .warning {
     color: var(--red);
     font-weight: 600;
@@ -221,37 +387,46 @@ form label, form > input  {
         padding-left: 40px;
         padding-right: 40px;
     }
+
     header {
         flex-direction: row;
     }
+
     header div {
         width: 100%;
     }
+
     header button {
         margin-top: 0px;
     }
+
     footer {
         text-align: center;
         bottom: 0;
     }
+
     section {
         flex-direction: row;
     }
+
     article {
         width: 220px;
         justify-content: space-between;
     }
+
     #logIn:hover, #logOut:hover {
         cursor: pointer;
         color: var(--darkBlue);
         background: var(--gradient1-pale);
         width: 140px;
     }
+
     #signUp:hover {
         cursor: pointer;
         background: var(--gradient1-pale);
         width: 140px;
     }
+
     button:hover,
     .button:hover {
         font-size: 14.5px;
@@ -259,4 +434,5 @@ form label, form > input  {
         background: var(--gradient1-pale);
         width: 100%;
     }
+
 }
