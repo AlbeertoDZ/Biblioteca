@@ -6,17 +6,18 @@
 
 :root {
     --darkBlue : #16199e;
-    --lightBlue : #48cae4;
+    --lightBlue : #3f76d5;
     --gradient1: linear-gradient(130deg, #023e8a, #0096c7,#48cae4);
-    --gradient1-pale: linear-gradient(130deg, #0077b6, #00b4d8, #90e0ef);
-    --gradient2: linear-gradient(130deg, #415a77, #778da9);
+    --gradient1-pale: linear-gradient(130deg, #023e8a, #5e60ce, #48cae4);
+    --gradient2: linear-gradient(130deg, #023e8a, #5e60ce, #48cae4);
+    --gradient3: linear-gradient(130deg, #ade8f4, #48cae4, #0096c7);;
     --white: #fff;
     --red: #d90429;
     --black: #000000;
 }
 
 body {
-    background: var(--darkBlue);
+    background: var(--gradient3);
 }
 
 header {
@@ -73,6 +74,7 @@ section {
     justify-content: center;
     gap: 26px;
     padding: 28px 30px;
+    
 }
 
 article{
@@ -83,8 +85,7 @@ article{
     gap: 18px;
     width: 100%;
     color: var(--white);
-    border: 1px solid transparent;
-    border-image: var(--gradient1);
+    border: 1px solid ;
     overflow: hidden;
 }
 
@@ -111,9 +112,12 @@ article div:first-child {
     font-weight: 200;
 }
 
+main {
+    margin-bottom: 60px;
+}
 
 footer {
-    position: fixed;
+    position: relative;
     width: 100%;
     padding: 20px;
     color: var(--white);
@@ -317,13 +321,13 @@ footer h3 {
     width: 100%;
     height: 100%;
     background-color: var(--gradient1);
-    /* Fondo oscuro */
     z-index: 1000;
     /* Asegura que el popup esté encima */
 }
 
 .popup-content {
-    background-color: var(--lightBlue);
+    color: var(--white);
+    background: var(--gradient1);
     margin: 15% auto;
     border-radius: 10px;
     padding: 20px;
@@ -401,8 +405,10 @@ form label, form > input  {
     }
 
     footer {
+        position: relative;
         text-align: center;
         bottom: 0;
+        margin-top: 20px;
     }
 
     section {

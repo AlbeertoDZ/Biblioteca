@@ -228,7 +228,7 @@ async function paintListBooks() {
                     <div>
                         <h2>${displayName}</h2>
                         <p><strong>Categoría:</strong> ${listName}</p>
-                         <p><strong>Oldest book:</strong> ${oldestBook}</p>
+                        <p><strong>Oldest book:</strong> ${oldestBook}</p>
                         <p><strong>Newest book:</strong> ${newestBook}</p>
                         <p><strong>Actualización:</strong> ${updated}</p>
                     </div>
@@ -267,6 +267,7 @@ async function paintListBooks() {
         hideSpinner();
     }
 }
+
 
 // Iniciar la aplicación
 document.addEventListener('DOMContentLoaded', () => {
