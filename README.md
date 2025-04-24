@@ -68,5 +68,5 @@ Al cargar la web:
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tuusuario/nyt-booklists.git
+   git clone https://github.com/AlbeertoDZ/Biblioteca.git
 
