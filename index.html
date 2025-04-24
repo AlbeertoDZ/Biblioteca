@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NY Times Best Sellers Dashboard</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <!--            Titulo principal            -->
+    <header>
+        <div>
+            <h1></h1>
+            <p id="message"></p>
+        </div>
+        <div id="divUser">
+            <button id="logIn">LOGIN</button>
+            <button id="signUp">SIGN UP</button>
+        </div>
+    </header>
+    <main>
+
+        <!--        Contenedor de spinner de carga          -->
+        <div class="container">
+            <div id="loading" class="loading">
+                loading&#8230;
+            </div>
+        </div>
+        <!--        Login Popup     -->
+        <section id="popupSignIn" class="popup">
+            <div class="popup-content">
+                <span class="close" id="closePopupSignIn"><!--&times;--></span>
+                <h2>Sign Up Form</h2>
+                <form id="formSignIn" action="#" method="post">
+                    <div>
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" name="email" placeholder="Your email" required>
+                    </div>
+                    <div>
+                        <label for="loginPass">Password:</label>
+                        <input type="password" id="loginPass" name="password" placeholder="Your password" required>
+                    </div>
+                    <input class="button" type="submit" value="SEND">
+                </form>
+            </div>
+        </section>
+
+        <!--        SignUp PopUp    -->
+        <div id="popupSignUp" class="popup">
+            <div class="popup-content">
+                <span class="close" id="closePopupSignUp"><!--&times;--></span>
+                <h2>Sign Up Form</h2>
+                <form id="formSignUp" action="#" method="post">
+                    <div>
+                        <label for="signUpEmail">Email:</label>
+                        <input type="email" id="signUpEmail" name="name" placeholder="Your email" required>
+                    </div>
+                    <div>
+                        <label for="signUpPass">Password:</label>
+                        <input type="password" id="signUpPass" name="pass" placeholder="Your password" required>
+                    </div>
+                    <div>
+                        <label for="signUpPass2">Repeat Password:</label>
+                        <input type="password" id="signUpPass2" name="pass2" placeholder="Repeat your password" required>
+                    </div>
+                    <input class="button" type="submit" value="SEND">
+                    <div class="warningDiv"></div>
+                </form>
+            </div>
+        </div>
+        <section id="filtros">
+            
+        </section>
+
+        <section id="data">
+
+        </section>
+    </main>
+
+    <!--            Footer          -->
+
+    <footer>
+        <div>
+            <p>The data in the web has been taken from
+                <a target="_blank" href="https://developer.nytimes.com/docs/books-product/1/overview">Books API</a>, by
+                <a target="_blank" href="https://developer.nytimes.com/">NY Times Developers</a>
+            </p>
+        </div>
+        <div>
+            <p>Made by <a href="https://github.com/AlbeertoDZ" target="_blank">Alberto Diez Alcobendas</a></p>
+        <a href="https://www.linkedin.com/in/alberto-diez-alcobendas-8b7340209" target="_blank" id="linkedin-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+        </a>
+        </div>
+    </footer>
+
+    <!--            Scripts         -->
+
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
