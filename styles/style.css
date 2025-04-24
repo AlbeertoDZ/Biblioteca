@@ -5,15 +5,18 @@
 }
 
 :root {
-    --darkBlue : #16199e;
-    --lightBlue : #3f76d5;
-    --gradient1: linear-gradient(130deg, #023e8a, #0096c7,#48cae4);
-    --gradient1-pale: linear-gradient(130deg, #023e8a, #5e60ce, #48cae4);
-    --gradient2: linear-gradient(130deg, #023e8a, #5e60ce, #48cae4);
-    --gradient3: linear-gradient(130deg, #ade8f4, #48cae4, #0096c7);;
-    --white: #fff;
-    --red: #d90429;
-    --black: #000000;
+    --darkGreen: #2e3633; /* Verde oscuro */
+    --purpleGray: #56455b; /* Púrpura grisáceo */
+    --softGray: #7e767b; /* Gris suave */
+    --lightPurple: #cfb1d0; /* Púrpura claro */
+    --palePink: #efdef0; /* Rosa pálido */
+    --gradient1: linear-gradient(130deg, #2e3633, #56455b); /* Verde oscuro a púrpura grisáceo */
+    --gradient1-pale: linear-gradient(130deg, #7e767b, #cfb1d0); /* Gris suave a púrpura claro */
+    --gradient2: linear-gradient(130deg, #56455b, #cfb1d0); /* Púrpura grisáceo a púrpura claro */
+    --gradient3: linear-gradient(130deg, #2e3633, #7e767b); /* Verde oscuro a gris suave */
+    --white: #ffffff; /* Blanco puro */
+    --red: #ff4d4d; /* Rojo brillante */
+    --black: #1a1a1a; /* Negro suave */
 }
 
 body {
@@ -21,6 +24,7 @@ body {
 }
 
 header {
+    background: var(--gradient1);
     color: var(--white);
     padding-top: 20px;
     text-align: center;
@@ -54,7 +58,7 @@ h2 {
     font-family: sans-serif;
     font-weight: 600;
     font-size: 18px;
-    background: var(--gradient2);
+    background: var(--lightPurple);
     /*Establecer el fondo del texto */
     -webkit-background-clip: text;
     /* Clip del fondo en el texto para WebKit */
@@ -96,13 +100,19 @@ button,
     font-weight: 600;
     font-size: 14px;
     color: var(--white);
-    background: var(--gradient1);
+    background: var(--gradient2);
     width: 100%;
     padding: 9px;
     border-radius: 8px;
     border: none;
     height: 42px;
     transition: 0.3s;
+}
+
+button:hover,
+.button:hover {
+    background: var(--gradient1-pale); /* Efecto hover con gris suave a púrpura claro */
+    cursor: pointer;
 }
 
 article div:first-child {
@@ -129,6 +139,27 @@ footer {
 
 footer h3 {
     padding-bottom: 4px;
+}
+
+
+#linkedin-icon {
+    margin: 0; /* Elimina márgenes del contenedor */
+    padding: 0; /* Elimina paddings del contenedor */
+    display: flex; /* Asegura un diseño limpio */
+    justify-content: center; /* Centra el ícono horizontalmente */
+    align-items: center; /* Centra el ícono verticalmente */
+  }
+
+#linkedin-icon img {
+  width: 20px; /* Tamaño del ícono */
+  height: 20px;
+  margin-top: 10px;
+  transition: transform 0.3s ease; /* Transición suave al pasar el ratón */
+}
+
+
+#linkedin-icon img:hover {
+  transform: scale(1.2); /* Aumenta el tamaño al pasar el ratón */
 }
 
 .book div:nth-child(2) {
@@ -349,7 +380,7 @@ form {
 input {
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid var(--darkBlue);
+    border: 1px solid var(--darkGreen);
 }
 
 form label, form > input  {
@@ -381,6 +412,46 @@ form label, form > input  {
     color: var(--red);
     font-weight: 600;
     padding-top: 12px;
+}
+
+/* Filtros */
+.filtros-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background: var(--gradient1);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.filtro label {
+    font-size: 12px;
+    color: var(--white);
+}
+
+.filtro select,
+.filtro input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--darkGreen);
+    font-size: 14px;
+}
+
+.reset-button {
+    margin-top: auto;
+    width: 80px; /* Ajusta el ancho */
+    height: 35px; /* Ajusta la altura */
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    padding: 5px; /* Espaciado interno reducido */
+    border-radius: 5px; /* Bordes redondeados */
 }
 
 /* Media Queries */
@@ -422,7 +493,7 @@ form label, form > input  {
 
     #logIn:hover, #logOut:hover {
         cursor: pointer;
-        color: var(--darkBlue);
+        color: var(--purpleGray);
         background: var(--gradient1-pale);
         width: 140px;
     }
