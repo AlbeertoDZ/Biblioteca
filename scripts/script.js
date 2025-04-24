@@ -228,7 +228,7 @@ async function paintListBooks() {
                     <div>
                         <h2>${displayName}</h2>
                         <p><strong>Categoría:</strong> ${listName}</p>
-                         <p><strong>Oldest book:</strong> ${oldestBook}</p>
+                        <p><strong>Oldest book:</strong> ${oldestBook}</p>
                         <p><strong>Newest book:</strong> ${newestBook}</p>
                         <p><strong>Actualización:</strong> ${updated}</p>
                     </div>
@@ -267,6 +267,146 @@ async function paintListBooks() {
         hideSpinner();
     }
 }
+
+
+// Funciones filtros
+
+document.addEventListener('DOMContentLoaded', () => {
+    const filtrosSection = document.getElementById('filtros');
+    let originalLists = []; // Guardar los datos originales
+    let filteredLists = []; // Guardar los datos filtrados
+
+    // Crear contenedor de filtros
+    const filtrosContainer = document.createElement('div');
+    filtrosContainer.classList.add('filtros-container');
+
+    // Filtro por frecuencia
+    const filterFrequency = document.createElement('div');
+    filterFrequency.classList.add('filtro');
+    filterFrequency.innerHTML = `
+        <label for="filterFrequency">Frecuencia:</label>
+        <select id="filterFrequency">
+            <option value="">Todas</option>
+            <option value="WEEKLY">Semanal</option>
+            <option value="MONTHLY">Mensual</option>
+        </select>
+    `;
+    filtrosContainer.appendChild(filterFrequency);
+
+    // Filtro por categoría
+    const filterCategory = document.createElement('div');
+    filterCategory.classList.add('filtro');
+    filterCategory.innerHTML = `
+        <label for="filterCategory">Categoría:</label>
+        <input type="text" id="filterCategory" placeholder="Buscar categoría...">
+    `;
+    filtrosContainer.appendChild(filterCategory);
+
+    // Filtro de ordenación
+    const sortOptions = document.createElement('div');
+    sortOptions.classList.add('filtro');
+    sortOptions.innerHTML = `
+        <label for="sortOptions">Ordenar por:</label>
+        <select id="sortOptions">
+            <option value="">Seleccionar</option>
+            <option value="oldestAsc">Más antiguo (ascendente)</option>
+            <option value="oldestDesc">Más antiguo (descendente)</option>
+            <option value="newestAsc">Más reciente (ascendente)</option>
+            <option value="newestDesc">Más reciente (descendente)</option>
+            <option value="categoryAZ">Categoría (A-Z)</option>
+            <option value="categoryZA">Categoría (Z-A)</option>
+        </select>
+    `;
+    filtrosContainer.appendChild(sortOptions);
+
+    // Botón para resetear filtros
+    const resetButton = document.createElement('button');
+    resetButton.textContent = 'Resetear Filtros';
+    resetButton.classList.add('reset-button');
+    filtrosContainer.appendChild(resetButton);
+
+    // Agregar contenedor de filtros a la sección
+    filtrosSection.appendChild(filtrosContainer);
+
+    // Función para renderizar los datos
+    const renderData = (lists) => {
+        const dataSection = document.getElementById('data');
+        dataSection.innerHTML = ''; // Limpiar contenido previo
+        lists.forEach(list => {
+            dataSection.innerHTML += `
+                <article>
+                    <h2>${list.display_name}</h2>
+                    <p><strong>Categoría:</strong> ${list.list_name}</p>
+                    <p><strong>Oldest book:</strong> ${list.oldest_published_date}</p>
+                    <p><strong>Newest book:</strong> ${list.newest_published_date}</p>
+                    <p><strong>Actualización:</strong> ${list.updated}</p>
+                    <div>
+                        <button class='viewList' data-list-name='${list.list_name}'>VER LISTA ></button>
+                    </div>
+                </article>
+            `;
+        });
+    };
+
+    // Función para aplicar los filtros
+    const applyFilters = () => {
+        filteredLists = [...originalLists]; // Restaurar los datos originales antes de filtrar
+
+        // Filtro por frecuencia
+        const frequency = document.getElementById('filterFrequency').value;
+        if (frequency) {
+            filteredLists = filteredLists.filter(list => list.updated.toUpperCase() === frequency);
+        }
+
+        // Filtro por categoría
+        const categorySearch = document.getElementById('filterCategory').value.toLowerCase();
+        if (categorySearch) {
+            filteredLists = filteredLists.filter(list => list.display_name.toLowerCase().includes(categorySearch));
+        }
+
+        // Ordenar listas
+        const sortOption = document.getElementById('sortOptions').value;
+        if (sortOption === 'oldestAsc') {
+            filteredLists.sort((a, b) => new Date(a.oldest_published_date) - new Date(b.oldest_published_date));
+        } else if (sortOption === 'oldestDesc') {
+            filteredLists.sort((a, b) => new Date(b.oldest_published_date) - new Date(a.oldest_published_date));
+        } else if (sortOption === 'newestAsc') {
+            filteredLists.sort((a, b) => new Date(a.newest_published_date) - new Date(b.newest_published_date));
+        } else if (sortOption === 'newestDesc') {
+            filteredLists.sort((a, b) => new Date(b.newest_published_date) - new Date(a.newest_published_date));
+        } else if (sortOption === 'categoryAZ') {
+            filteredLists.sort((a, b) => a.display_name.localeCompare(b.display_name));
+        } else if (sortOption === 'categoryZA') {
+            filteredLists.sort((a, b) => b.display_name.localeCompare(a.display_name));
+        }
+
+        // Renderizar los datos filtrados
+        renderData(filteredLists);
+    };
+
+    // Función para resetear los filtros
+    const resetFilters = () => {
+        document.getElementById('filterFrequency').value = '';
+        document.getElementById('filterCategory').value = '';
+        document.getElementById('sortOptions').value = '';
+        renderData(originalLists); // Renderizar los datos originales
+    };
+
+    // Obtener los datos iniciales
+    const fetchData = async () => {
+        originalLists = await getListsBooks(); // Obtener datos desde la API
+        renderData(originalLists); // Renderizar los datos originales
+    };
+
+    // Agregar eventos a los filtros
+    document.getElementById('filterFrequency').addEventListener('change', applyFilters);
+    document.getElementById('filterCategory').addEventListener('input', applyFilters);
+    document.getElementById('sortOptions').addEventListener('change', applyFilters);
+    resetButton.addEventListener('click', resetFilters);
+
+    // Cargar los datos iniciales
+    fetchData();
+});
 
 // Iniciar la aplicación
 document.addEventListener('DOMContentLoaded', () => {
